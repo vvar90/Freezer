@@ -1,4 +1,4 @@
-package vvar90.freezer.Activities
+package vvar90.freezer.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import vvar90.freezer.Data.Freezer
-import vvar90.freezer.Database.DatabaseHandler
+import vvar90.freezer.dao.Freezer
+import vvar90.freezer.database.DatabaseHandler
 import vvar90.freezer.R
 
 class AddFreezerActivity : AppCompatActivity() {
@@ -26,7 +26,6 @@ class AddFreezerActivity : AppCompatActivity() {
     private fun setOnClickListenerToAddFreezerButton(dbHandler: DatabaseHandler) {
 
         val addFreezerButton = findViewById<Button>(R.id.addFreezer)
-        val numberOfFreezers = dbHandler.getFreezerCount()
         addFreezerButton.setOnClickListener {
             var freezerName = findViewById<EditText>(R.id.freezerNameEditText).text.toString()
             if(isNameBlank(freezerName)){
@@ -34,14 +33,14 @@ class AddFreezerActivity : AppCompatActivity() {
                         .show()
             }
             else{
-                addFreezerAndFinishActivity(freezerName, numberOfFreezers, dbHandler)
+                addFreezerAndFinishActivity(freezerName, dbHandler)
             }
         }
     }
 
-    private fun addFreezerAndFinishActivity(freezerName: String, numberOfFreezers: Int, dbHandler: DatabaseHandler) {
-        val freezer = Freezer(freezerName, numberOfFreezers + 1)
-        dbHandler.addFreezer(freezer)
+    private fun addFreezerAndFinishActivity(freezerName: String, dbHandler: DatabaseHandler) {
+        val freezer = Freezer(freezerName)
+        dbHandler.freezerDbHandler.addFreezer(freezer)
         Toast.makeText(this, "Freezer $freezerName successfully added", Toast.LENGTH_SHORT)
                 .show()
         finish()
