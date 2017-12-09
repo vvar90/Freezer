@@ -1,4 +1,4 @@
-package vvar90.freezer
+package vvar90.freezer.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import vvar90.freezer.Data.Freezer
-import vvar90.freezer.Database.DatabaseHandler
+import vvar90.freezer.database.DatabaseHandler
+import vvar90.freezer.R
 
 /**
  * Created by vvar9 on 08/12/2017.
@@ -15,14 +15,14 @@ import vvar90.freezer.Database.DatabaseHandler
 class FreezersAdapter(context: Context) : BaseAdapter() {
 
     private val mInflator: LayoutInflater = LayoutInflater.from(context)
-    private var freezerNames: List<Freezer>
+    private var freezerList: List<String>
     private val dbHandler: DatabaseHandler = DatabaseHandler(context)
 
     init {
-        freezerNames = dbHandler.getAllFreezers()!!
+        freezerList = dbHandler.freezerDbHandler.getAllFreezers()!!.map { freezer -> freezer.name }
     }
     override fun getItem(position: Int): Any {
-        return freezerNames[position]
+        return freezerList[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -30,7 +30,7 @@ class FreezersAdapter(context: Context) : BaseAdapter() {
     }
 
     override fun getCount(): Int {
-        return freezerNames.size
+        return freezerList.size
     }
 
     override fun getView(position1: Int, convertView: View?, parent: ViewGroup?): View? {
@@ -45,15 +45,12 @@ class FreezersAdapter(context: Context) : BaseAdapter() {
             vh = view.tag as ListRowHolder
         }
 
-        vh.label.text = freezerNames[position1].toString()
+        vh.label.text = freezerList[position1].toString()
         return view
     }
     private class ListRowHolder(row: View?) {
-        public val label: TextView
+        public val label: TextView = row?.findViewById<TextView>(R.id.label) as TextView
 
-        init {
-            this.label = row?.findViewById<TextView>(R.id.label) as TextView
-        }
     }
 }
 

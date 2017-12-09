@@ -1,9 +1,9 @@
-package vvar90.freezer.Activities
+package vvar90.freezer.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
-import vvar90.freezer.FreezersAdapter
+import vvar90.freezer.adapters.FreezersAdapter
 import vvar90.freezer.R
 
 class FreezersActivity : AppCompatActivity() {
@@ -14,5 +14,7 @@ class FreezersActivity : AppCompatActivity() {
 
         val listView = findViewById<ListView>(R.id.listViewItem)
         listView.adapter = FreezersAdapter(this)
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 }
