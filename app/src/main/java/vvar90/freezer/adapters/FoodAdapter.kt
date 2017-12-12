@@ -6,19 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import vvar90.freezer.database.DatabaseHandler
 import vvar90.freezer.R
 
 /**
- * Created by vvar9 on 08/12/2017.
+ * Created by vvar9 on 12/12/2017.
  */
-class FreezersAdapter(context: Context, freezers: List<String>) : BaseAdapter() {
-
+class FoodAdapter(context: Context, food: List<String>) : BaseAdapter()  {
     private val mInflator: LayoutInflater = LayoutInflater.from(context)
-    private var freezerList: List<String> = freezers
+    private var foodList: List<String> = food
 
     override fun getItem(position: Int): Any {
-        return freezerList[position]
+        return foodList[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -26,7 +24,7 @@ class FreezersAdapter(context: Context, freezers: List<String>) : BaseAdapter() 
     }
 
     override fun getCount(): Int {
-        return freezerList.size
+        return foodList.size
     }
 
     override fun getView(position1: Int, convertView: View?, parent: ViewGroup?): View? {
@@ -41,11 +39,11 @@ class FreezersAdapter(context: Context, freezers: List<String>) : BaseAdapter() 
             vh = view.tag as ListRowHolder
         }
 
-        vh.label.text = freezerList[position1].toString()
+        vh.label.text = foodList[position1].toString()
         return view
     }
     private class ListRowHolder(row: View?) {
-        val label: TextView = row?.findViewById<TextView>(R.id.label) as TextView
+        public val label: TextView = row?.findViewById<TextView>(R.id.label) as TextView
+
     }
 }
-

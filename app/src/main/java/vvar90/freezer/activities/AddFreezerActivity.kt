@@ -10,13 +10,11 @@ import vvar90.freezer.dao.Freezer
 import vvar90.freezer.database.DatabaseHandler
 import vvar90.freezer.R
 
-class AddFreezerActivity : AppCompatActivity() {
+class AddFreezerActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_freezer)
-
-        val dbHandler = DatabaseHandler(this)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setOnClickListenerToAddFreezerButton(dbHandler)

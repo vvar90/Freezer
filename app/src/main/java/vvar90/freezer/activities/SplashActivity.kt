@@ -8,22 +8,22 @@ import android.widget.Toast
 import vvar90.freezer.R
 import vvar90.freezer.database.DatabaseHandler
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val dbHandler = DatabaseHandler(this)
+
         setOnClickListenerToAddFreezerButton()
-        setOnClickListenerToCheckFreezerButton(dbHandler)
+        setOnClickListenerToCheckFreezerButton()
     }
 
-    private fun setOnClickListenerToCheckFreezerButton(dbHandler: DatabaseHandler) {
+    private fun setOnClickListenerToCheckFreezerButton() {
 
         var checkFreezerButton = findViewById<Button>(R.id.checkFreezersBtn)
             checkFreezerButton.setOnClickListener {
-            if (thereAreOneOrMoreFreezers(dbHandler)){
+            if (thereAreOneOrMoreFreezers()){
                 val openFreezersActivity = Intent(this, FreezersActivity::class.java)
                 startActivity(openFreezersActivity)
             }
@@ -34,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun thereAreOneOrMoreFreezers(dbHandler: DatabaseHandler): Boolean {
+    private fun thereAreOneOrMoreFreezers(): Boolean {
         return dbHandler.freezerDbHandler.getAllFreezers()?.size != 0
                 && dbHandler.freezerDbHandler.getAllFreezers() != null
     }
