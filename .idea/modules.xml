@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Freezer.iml" filepath="$PROJECT_DIR$/Freezer.iml" />
-      <module fileurl="file://C:\Users\vvar9\Desktop\Projects\Freezer\Freezer.iml" filepath="C:\Users\vvar9\Desktop\Projects\Freezer\Freezer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\vvar9\Desktop\Projects\Freezer\app\app.iml" filepath="C:\Users\vvar9\Desktop\Projects\Freezer\app\app.iml" />
     </modules>
   </component>
 </project>
