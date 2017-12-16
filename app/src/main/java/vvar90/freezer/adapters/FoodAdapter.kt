@@ -12,6 +12,7 @@ import vvar90.freezer.R
  * Created by vvar9 on 12/12/2017.
  */
 class FoodAdapter(context: Context, food: List<String>) : BaseAdapter()  {
+    //TODO: Implement it with Recycler View
     private val mInflator: LayoutInflater = LayoutInflater.from(context)
     private var foodList: List<String> = food
 
@@ -43,7 +44,8 @@ class FoodAdapter(context: Context, food: List<String>) : BaseAdapter()  {
         return view
     }
     private class ListRowHolder(row: View?) {
-        public val label: TextView = row?.findViewById<TextView>(R.id.label) as TextView
+        //TODO: The id is invalid
+        public val label: TextView = row?.findViewById<TextView>(R.id.itemText) as TextView
 
     }
 }

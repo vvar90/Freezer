@@ -21,7 +21,8 @@ class FreezerFoodActivity : BaseActivity() {
 
     private fun startActivity(){
         var foodList = mFood.map { food -> food.name }
-        val listView = findViewById<ListView>(R.id.listViewItemFood)
+        val listView = findViewById<ListView>(R.id.recyclerViewItemFood)
         listView.adapter = FoodAdapter(this, foodList)
     }
+
 }
